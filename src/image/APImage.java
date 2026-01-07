@@ -190,12 +190,12 @@ public class APImage extends JFrame implements Iterable<Pixel>{
     /**
      * Saves the image under its current file name or runs <code>saveAs</code> if no file name yet.
      */
-    public boolean save(){
+    public boolean save(String image){
         if (fileName.equals("")) 
             return saveAs();
         try{
-            int w = image.getWidth(APImage.this);
-            int h = image.getHeight(APImage.this);
+            int w = this.image.getWidth(APImage.this);
+            int h = this.image.getHeight(APImage.this);
             int[] pix = pixelsToInts(pixels);
             BufferedImage buffer = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
             buffer.setRGB(0, 0, w, h, pix, 0, w);
@@ -218,7 +218,7 @@ public class APImage extends JFrame implements Iterable<Pixel>{
             return false;
         fileName = file.getName();
         setTitle(fileName);
-        return save();
+        return save("grayscale.jpg");
     }
 
     // Sets the image window's attributes
